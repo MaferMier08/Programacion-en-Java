@@ -44,6 +44,8 @@ public class Act6 {
             letter = 'B';
         }else if (average >90 && average < 101) {
             letter = 'A';
+        }else {
+            letter = 'N';
         }
         return letter;
     }
