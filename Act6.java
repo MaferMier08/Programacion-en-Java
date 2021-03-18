@@ -1,15 +1,6 @@
 import java.util.Scanner;
 
 public class Act6 {
-    int x;
-    int y;
-    // X = {valor primer atributo}
-    //Y = {valor segundo atributo}
-    //Suma: {resultado suma atributos}
-    //Resta: {resultado resta atributos}
-    //Multiplicación: {resultado producto atributos}
-    //División: {resultado división atributos}
-    //Módulo: {resultado módulo atributos}
 
     public static void main(String[] args) {
         // Pedir nombre
