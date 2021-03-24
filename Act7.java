@@ -6,7 +6,9 @@ public class Act7 {
         Scanner name = new Scanner(System.in);
         System.out.printf("Valor de atributos a declarar: ");
         int a = name.nextInt();
+        //Llamar numeros primos
         PrimeNumbers(a);
+        //Llamar Fibonacci
         Fibonacci(a);
     }
 
