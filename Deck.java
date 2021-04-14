@@ -6,10 +6,35 @@ public class Deck {
     public static void main(String[] args) {
         Deck deck = new Deck();
         deck.create();
-        deck.shuffle();
-        deck.head();
-        deck.pick();
-        deck.hand();
+        Scanner scanner = new Scanner(System.in);
+        int value = 5;
+        System.out.println("Bienvenido a Poker!");
+        System.out.println("Selecciona una opción:");
+        System.out.println("1 Mezclar deck");
+        System.out.println("2 Sacar una carta");
+        System.out.println("3 Carta al azar");
+        System.out.println("4 Generar una mano de 5 cartas");
+        System.out.println("0 Salir");
+
+        do {
+            System.out.print("Ingrese el número que quiera probar: ");
+            value = scanner.nextInt();
+            switch (value)
+            {
+                case 1:  deck.shuffle();
+                    break;
+                case 2:  deck.head();
+                    break;
+                case 3:  deck.pick();
+                    break;
+                case 4:  deck.hand();
+                    break;
+                case 0:
+                    System.out.println("Adiós!");
+                    break;
+                default: System.out.println("Opción no válida");
+            }
+        } while (value != 0);
 
     }
 
@@ -31,11 +56,6 @@ public class Deck {
                 deck.add(card.Palo[3]+", "+card.Color[0]+", "+card.Valor[l]);
                 l++;
             }
-        }
-
-        System.out.println("\n=== Deck "+deck.size()+" ===");
-        for (Object o : deck) {
-            System.out.println(o);
         }
     }
 
