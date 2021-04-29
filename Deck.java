@@ -3,7 +3,7 @@ import java.util.*;
 public class Deck {
     private ArrayList<Object> deck = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Deck deck = new Deck();
         deck.create();
         Scanner scanner = new Scanner(System.in);
@@ -23,16 +23,17 @@ public class Deck {
             {
                 case 1:  deck.shuffle();
                     break;
-                case 2:  deck.head();
+                case 2:deck.head();
+                   break;
+                case 3: deck.pick();
                     break;
-                case 3:  deck.pick();
-                    break;
-                case 4:  deck.hand();
+                case 4:deck.hand();
                     break;
                 case 0:
                     System.out.println("Adiós!");
                     break;
                 default: System.out.println("Opción no válida");
+                // throw new IllegalStateException("Opción no válida: " + value);
             }
         } while (value != 0);
 
@@ -66,31 +67,45 @@ public class Deck {
     }
 
     //mostrar la primera carta del deck y removerla
-    public void head(){
-        System.out.println("La primera carta del deck");
-        System.out.println(deck.get(0));
-        deck.remove(0);
-        System.out.println("Quedan: "+deck.size());
+    public void head() throws Exception{
+        try{
+            System.out.println("La primera carta del deck");
+            System.out.println(deck.get(0));
+            deck.remove(0);
+            System.out.println("Quedan: "+deck.size());
+        } catch (Exception e){
+            System.out.println("Se han agotado las cartas");
+            System.exit(1);
+        }
+
     }
 
     //seleccionar una carta al azar y removerla
-    public void pick(){
-        int value = (int)((Math.random()*50));
-        System.out.println("Una carta random del deck");
-        System.out.println(deck.get(value));
-        deck.remove(value);
-        System.out.println("Quedan: "+deck.size());
+    public void pick() throws Exception{
+        try{
+            int value = (int)((Math.random()*deck.size()));
+            System.out.println("Una carta random del deck");
+            System.out.println(deck.get(value));
+            deck.remove(value);
+            System.out.println("Quedan: "+deck.size());
+        } catch (Exception e){
+            System.out.println("Se han agotado las cartas");
+            System.exit(1);
+        }
     }
 
     //regresará un arreglo de cinco cartas del deck, y las removerá
-    public void hand(){
-        int i = 50;
-        for(int j=0; j < 5; j++){
-            int value = (int)((Math.random()*i));
-            System.out.println(deck.get(value));
-            deck.remove(value);
-            i--;
+    public void hand() throws Exception{
+        try {
+            for (int j = 0; j < 5; j++) {
+                int value = (int) ((Math.random() * deck.size()));
+                System.out.println(deck.get(value));
+                deck.remove(value);
+            }
+            System.out.println("Quedan: " + deck.size());
+        } catch (Exception e){
+            System.out.println("Se han agotado las cartas");
+            System.exit(1);
         }
-        System.out.println("Quedan: "+deck.size());
     }
 }
